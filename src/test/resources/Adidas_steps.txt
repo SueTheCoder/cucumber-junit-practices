@@ -1,0 +1,39 @@
+
+Create a new cucumber framework project  Adidas_Cucumber_JAVA
+
+- pom.xml  :  copy paste from previous projects
+
+- CukesRunner: the brain of the project, control center
+
+- features: scenarios, test cases
+
+- glue : steps, JAVA code
+
+- pages: common locators, and methods
+
+- Runners: AdidasRunner
+
+- utilities: Driver, utility
+
+- configuration.properties
+
+String category = Laptops
+
+Locator =  "//a[.='Laptops']"
+
+String locator = "//a[.='"+category+"']";
+
+String product = Sony vaio i5;
+
+//a[.='Sony vaio i5']
+
+String locator = "//a[.='"+product+"']";
+
+
+to reach Delete button dynamically
+
+//table//tr//td[.='Dell i7 8gb']/..//td[.='Delete']/a
+
+String product = Dell i7 8gb;
+
+String locator = "//table//tr//td[.='"+product+"']/..//td[.='Delete']/a";
