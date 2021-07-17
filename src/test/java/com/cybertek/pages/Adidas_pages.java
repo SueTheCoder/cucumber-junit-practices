@@ -54,28 +54,23 @@ public class Adidas_pages {
     @FindBy(xpath = "//p[@class='lead text-muted ']")
     public WebElement confirmation;
 
-    @FindBy(xpath = "//button[@class=\"confirm btn btn-lg btn-primary\"]")
+    @FindBy(xpath = "//button[@class='confirm btn btn-lg btn-primary']")
     public WebElement OK;
 
     public int productAdder(String category, String product){
-        Driver.getDriver().findElement(By.xpath("//a[.='"+category+"']")).click();
+        Driver.getDriver().findElement(By.xpath("//a[.='" + category + "']")).click();
         BrowserUtils.sleep(1);
-        Driver.getDriver().findElement(By.xpath("//a[.='"+product+"']")).click();
+        Driver.getDriver().findElement(By.xpath("//a[.='" + product + "']")).click();
         BrowserUtils.sleep(1);
-
         String amountString = purchasePrice.getText();
         String[] arrayAmount = amountString.split(" ");
         int amount = Integer.parseInt(arrayAmount[0].substring(1));
-
         addCart.click();
         BrowserUtils.sleep(1);
         Alert alert = Driver.getDriver().switchTo().alert();
         alert.accept();
-
         BrowserUtils.sleep(1);
-
         homeLink.click();
-
         return amount;
 
     }
@@ -84,7 +79,7 @@ public class Adidas_pages {
         cart.click();
         BrowserUtils.sleep(1);
         int amount = Integer.parseInt(Driver.getDriver().findElement(By.xpath("//tbody//tr//td[.='"+product+"']/..//td[3]")).getText());
-        Driver.getDriver().findElement(By.xpath("//table//tr//td[.='"+product+"']/..//td[.='Delete']/a")).click();
+        Driver.getDriver().findElement(By.xpath("//table//tr//td[.='" + product + "']/..//td[.='Delete']/a")).click();
         BrowserUtils.sleep(3);
         return amount;
     }

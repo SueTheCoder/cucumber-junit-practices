@@ -12,7 +12,7 @@ Feature: Google search functionality
     When User searches for apple
     Then User should see apple in the title
 
-      @wip
+    @googleSearchItem
     Scenario: User search title verification
     Given User is on google home page
     When User searches for "mango"
