@@ -8,19 +8,15 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.concurrent.TimeUnit;
 
 public class Driver {
-
-
     /**
      Creating the private constructor so this class' object is not reachable from outside
      */
     private Driver(){}
-
     /**
      Making our 'driver' instance private so that it is not reachable from outside of the class.
      We make it static, because we want it to run before everything else, and also we will use it in a static method
      */
     private static WebDriver driver;
-
     /**
      Creating re-usable utility method that will return same 'driver' instance everytime we call it.
      */
@@ -53,7 +49,6 @@ public class Driver {
         // Same driver instance will be returned every time we call Driver.getDriver(); method
         return driver;
     }
-
     /**
      This method makes sure we have some form of driver session or driver ID has.
      Either null or not null it must exit
@@ -64,6 +59,4 @@ public class Driver {
             driver = null;
         }
     }
-
-
 }

@@ -56,4 +56,28 @@ public class LoginStepDefs {
     public void userEntersAdminPassword() {
         System.out.println("User enters admin password");
     }
+
+    @When("User enters {string} username")
+    public void user_enters_username(String string) {
+        if (string.equalsIgnoreCase("librarian")) {
+            System.out.println("User enters librarian username");
+            driver.findElement(By.id("inputEmail")).sendKeys("librarian13@library");
+        } else if(string.equalsIgnoreCase("student")){
+            System.out.println("User enters student username");
+            driver.findElement(By.id("inputEmail")).sendKeys("student13@library");
+        }
+    }
+
+    @When("User enters {string} password")
+    public void user_enters_password(String string) {
+        if (string.equalsIgnoreCase("librarian")) {
+            System.out.println("User enters librarian password");
+            driver.findElement(By.id("inputPassword")).sendKeys("9rf6axdD" + Keys.ENTER);
+        } else if(string.equalsIgnoreCase("student")){
+            System.out.println("User enters student password");
+            driver.findElement(By.id("inputPassword")).sendKeys("zcVbvUWH" + Keys.ENTER);
+        }
+    }
+
+
 }

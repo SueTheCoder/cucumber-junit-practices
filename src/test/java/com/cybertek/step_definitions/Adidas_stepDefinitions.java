@@ -8,14 +8,24 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import java.util.List;
 
 
 public class Adidas_stepDefinitions {
-
+    /**
+     * creating object to access pages class and we can use the methods, webElements and variables
+     */
     Adidas_pages adidasPage = new Adidas_pages();
     int expectedPurchaseAmount = 0;
     String orderID;
     int purchaseAmount;
+    int listPrice;
+    int addingPrice;
+    int cartPrice;
+
 
     @Given("User is on the Home Page")
     public void user_is_on_the_home_page() {
@@ -60,5 +70,39 @@ public class Adidas_stepDefinitions {
         BrowserUtils.sleep(1);
         Driver.closeDriver();
     }
+
+    @Then("Under {string} category user should see the list of products")
+    public void under_category_user_should_see_the_list_of_products(String category, List<String> expectedProducts ) {
+        Driver.getDriver().findElement(By.xpath("//a[.='" + category + "']")).click();
+        BrowserUtils.sleep(2);
+        // we're getting webElements of products from the page and putting their text into list of string
+        List<String> actualProducts = BrowserUtils.getElementsText(adidasPage.products);
+
+        System.out.println("actualProducts = " + actualProducts);
+        System.out.println("expectedProducts = " + expectedProducts);
+        Assert.assertEquals("verify the list of products failed", expectedProducts,actualProducts);
+    }
+
+    @When("User adds {string} from {string} to see the price")
+    public void user_adds_from_to_see_the_price(String products, String category) {
+        String locator = "//a[.='"+products+"']/../../h5";
+        listPrice = Integer.parseInt(Driver.getDriver().findElement(By.xpath(locator)).getText().substring(1));
+        addingPrice = adidasPage.productAdder(category,products);
+    }
+
+    @When("User removes {string} from cart to verify the price")
+    public void user_removes_from_cart_to_verify_the_price(String products) {
+        cartPrice = adidasPage.productRemover(products);
+    }
+
+    @Then("User verifies list and cart price are same and they are equal to {string}")
+    public void user_verifies_list_and_cart_price_are_same_and_they_are_equal_to(String priceString) {
+        int expectedPrice = Integer.parseInt(priceString);
+        Assert.assertEquals(expectedPrice, listPrice);
+        Assert.assertEquals(addingPrice, cartPrice);
+    }
+
+
+
 
 }

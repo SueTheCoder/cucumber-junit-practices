@@ -9,8 +9,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Adidas_pages {
+import java.util.List;
 
+public class Adidas_pages {
+    /**
+     * I create a constructor, so I can use these via creating pages object
+     * I use PageFactory class that I can initialize the driver
+     */
     public Adidas_pages() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
@@ -57,6 +62,15 @@ public class Adidas_pages {
     @FindBy(xpath = "//button[@class='confirm btn btn-lg btn-primary']")
     public WebElement OK;
 
+    @FindBy(xpath = "//a[@class='hrefch']")
+    public List<WebElement> products;  // list of webElement
+
+    /**
+     * adding reusable methods
+     * @param category
+     * @param product
+     * @return
+     */
     public int productAdder(String category, String product){
         Driver.getDriver().findElement(By.xpath("//a[.='" + category + "']")).click();
         BrowserUtils.sleep(1);
