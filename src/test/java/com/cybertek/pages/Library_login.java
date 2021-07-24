@@ -22,10 +22,11 @@ public class Library_login {
     @FindBy(xpath = "//button[.='Sign in']")
     public WebElement signIn;
 
-    @FindBy(xpath = "//span[.='Dashboard']")
-    public WebElement dashboard;
+    @FindBy(xpath = "//a[@id='navbarDropdown']/span")
+    public WebElement usernameDisplay;
 
-    @FindBy(xpath = "//a[@href='#users']")
-    public WebElement usersLink;
+    @FindBy(xpath = "//select[@name='tbl_users_length']")
+    public WebElement recordsDropdown;
+
 
 }

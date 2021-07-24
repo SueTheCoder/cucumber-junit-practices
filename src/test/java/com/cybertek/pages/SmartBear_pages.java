@@ -47,7 +47,7 @@ public class SmartBear_pages {
     @FindBy(id = "ctl00_MainContent_fmwOrder_TextBox5")
     public WebElement zip;
 
-    // redio button
+    // radio button
     @FindBy(id = "ctl00_MainContent_fmwOrder_cardList_0")
     public WebElement cardType;
 

@@ -39,68 +39,68 @@ public class SmartBear_stepDef {
     public void user_selects_from_product_dropdown(String product) {
         Select select = new Select(smartBearPages.productDropdownMenu);
         select.selectByVisibleText(product);
-        BrowserUtils.sleep(1);
+        //BrowserUtils.sleep(1);
     }
 
     @And("User enters {string} to quantity")
     public void userEntersToQuantity(String quantity) {
         smartBearPages.quantity.sendKeys(quantity);
-        BrowserUtils.sleep(1);
+        //BrowserUtils.sleep(1);
     }
 
     @Given("User enters {string} to costumer name")
     public void user_enters_to_costumer_name(String name) {
         smartBearPages.name.sendKeys(name);
-        BrowserUtils.sleep(1);
+        //BrowserUtils.sleep(1);
     }
 
     @Given("User enters {string} to street")
     public void user_enters_to_street(String street) {
         smartBearPages.street.sendKeys(street);
-        BrowserUtils.sleep(1);
+        //BrowserUtils.sleep(1);
     }
 
     @Given("User enters {string} to city")
     public void user_enters_to_city(String city) {
         smartBearPages.city.sendKeys(city);
-        BrowserUtils.sleep(1);
+        //BrowserUtils.sleep(1);
     }
 
     @Given("User enters {string} to state")
     public void user_enters_to_state(String state) {
         smartBearPages.state.sendKeys(state);
-        BrowserUtils.sleep(1);
+        //BrowserUtils.sleep(1);
     }
 
     @And("User enters {string}")
     public void userEnters(String zip) {
         smartBearPages.zip.sendKeys(zip);
-        BrowserUtils.sleep(1);
+        //BrowserUtils.sleep(1);
     }
 
     @Given("User selects {string} as card type")
     public void user_selects_as_card_type(String cardType) {
         Actions actions = new Actions(driver);
         actions.click(smartBearPages.cardType).perform();
-        BrowserUtils.sleep(1);
+        //BrowserUtils.sleep(1);
     }
 
     @Given("User enters {string} to card number")
     public void user_enters_to_card_number(String cardNumber) {
         smartBearPages.cardNumber.sendKeys(cardNumber);
-        BrowserUtils.sleep(1);
+        //BrowserUtils.sleep(1);
     }
 
     @Given("User enters {string} to expiration date")
     public void user_enters_to_expiration_date(String expDate) {
         smartBearPages.expireDate.sendKeys(expDate);
-        BrowserUtils.sleep(1);
+        //BrowserUtils.sleep(1);
     }
 
     @Given("User clicks process button")
     public void user_clicks_process_button() {
         smartBearPages.processButton.click();
-        BrowserUtils.sleep(1);
+        //BrowserUtils.sleep(1);
     }
 
     @Then("User verifies {string} is in the list")
