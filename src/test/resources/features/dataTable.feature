@@ -1,6 +1,6 @@
 Feature: Examples of Cucumber data table implementations
 
-
+  @fruits
   Scenario: Something happens
     #Given user does something
   Then user should see below words displayed
@@ -14,6 +14,7 @@ Feature: Examples of Cucumber data table implementations
     # to fix pipes order
       # WINDOWS: Ctrl + Alt + L
 
+  @months
   Scenario: User should be able to see all 12 months in months
   dropdown
     Given User is on the dropdowns page of practice tool
