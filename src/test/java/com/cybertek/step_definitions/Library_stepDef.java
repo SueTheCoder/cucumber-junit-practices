@@ -16,7 +16,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
 
 public class Library_stepDef {
 
@@ -29,57 +29,45 @@ public class Library_stepDef {
         driver.get(ConfigurationReader.getProperty("libraryURL"));
     }
 
-    @When("User enters username {string}")
-    public void userEntersUsername(String username) {
+    @When("I enter username {string}")
+    public void iEnterUsername(String username) {
         library.emailInput.sendKeys(username);
+        BrowserUtils.sleep(1);
     }
 
-    @And("User enters password {string}")
-    public void userEntersPassword(String password) {
+    @And("I enter password {string}")
+    public void iEnterPassword(String password) {
         library.passwordInput.sendKeys(password);
         library.signIn.click();
         BrowserUtils.sleep(1);
     }
 
 
-    @Then("User should see the dashboard")
-    public void user_should_see_the_dashboard() {
+    @Then("I should see the dashboard")
+    public void iShouldSeeTheDashboard() {
+        BrowserUtils.sleep(5);
         String actualTitle = driver.getTitle();
         String expectedTitle = "Library";
         Assert.assertEquals(expectedTitle, actualTitle);
     }
 
-    @When("User clicks {string} link")
-    public void user_clicks_link(String menuLinks) {
+    @And("I click {string} link")
+    public void iClickLink(String menuLinks) {
+        BrowserUtils.sleep(2);
         WebElement menu = driver.findElement(By.xpath("//span[.='"+ menuLinks + "']"));
         menu.click();
     }
-/*
-    @Then("User should see the records should have following options:")
-    public void user_should_see_the_records_should_have_following_options(List<String> dataTable) {
-        List<WebElement> columns = Driver.getDriver().findElements(By.xpath("//th"));
-        List<String> actual = new ArrayList<>();
-        for (WebElement each : columns) {
-            System.out.println(each.getText());
-            actual.add(each.getText());
-        }
-        Assert.assertEquals(actual, dataTable);
-    }
 
- */
-
-
-    @And("User sees to records dropdown value should be {string} by default")
-    public void userSeesToRecordsDropdownValueShouldBeByDefault(String value) {
+    @And("I see to records dropdown value should be {string} by default")
+    public void iSeeToRecordsDropdownValueShouldBeByDefault(String value) {
         Select select = new Select(library.recordsDropdown);
         select.selectByVisibleText(value);
         System.out.println("select.getFirstSelectedOption().getText() = " + select.getFirstSelectedOption().getText());
         Assert.assertEquals(select.getFirstSelectedOption().getText(), value);
-
     }
 
-    @Then("User should see the records should have following options:")
-    public void userShouldSeeTheRecordsShouldHaveFollowingOptions(List<String> showRecordDropdown) {
+    @Then("I should see the records should have following options:")
+    public void iShouldSeeTheRecordsShouldHaveFollowingOptions(List<String> showRecordDropdown) {
         List<WebElement> columns = driver.findElements(By.xpath("//select[@name='tbl_users_length']/option"));
         List<String> actual = new ArrayList<>();
         for (WebElement each : columns) {
@@ -89,8 +77,8 @@ public class Library_stepDef {
         Assert.assertEquals(actual, showRecordDropdown);
     }
 
-    @Then("User should have following columns in the table:")
-    public void userShouldHaveFollowingColumnsInTheTable(List<String> tableElements) {
+    @Then("I should have following columns in the table:")
+    public void iShouldHaveFollowingColumnsInTheTable(List<String> tableElements) {
         List<WebElement> tableHeads = driver.findElements(By.xpath("//th"));
         List<String> actual = new ArrayList<>();
         for (WebElement each : tableHeads) {
@@ -115,5 +103,7 @@ public class Library_stepDef {
         Assert.assertTrue(username.contains(actualDisplay));
         System.out.println(username + " - " + actualDisplay);
     }
+
+
 
 }

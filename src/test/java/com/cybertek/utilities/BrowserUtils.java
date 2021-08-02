@@ -1,5 +1,7 @@
 package com.cybertek.utilities;
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -154,7 +156,7 @@ public class BrowserUtils {
      */
     public static void verifyElementDisplayed(By by) {
         try {
-            Assert.assertTrue("Element not visible: " + by, Driver.getDriver().findElement(by).isDisplayed());
+            assertTrue("Element not visible: " + by, Driver.getDriver().findElement(by).isDisplayed());
         } catch (NoSuchElementException e) {
             Assert.fail("Element not found: " + by);
 
@@ -169,7 +171,7 @@ public class BrowserUtils {
      */
     public static void verifyElementDisplayed(WebElement element) {
         try {
-            Assert.assertTrue("Element not visible: " + element, element.isDisplayed());
+            assertTrue("Element not visible: " + element, element.isDisplayed());
         } catch (NoSuchElementException e) {
             Assert.fail("Element not found: " + element);
 

@@ -1,4 +1,4 @@
-
+@library
 Feature: Library app login feature
   User Story:
   As a user, I should be able to login with correct credentials to different accounts and dashboard should be displayed.
@@ -7,17 +7,23 @@ Feature: Library app login feature
   Background: Assuming user is on the login page
     Given User is on the login page
 
-
+  @library     @librarian
   Scenario Outline: Login as librarian
-    When User enters username "<username>"
-    And User enters password "<password>"
-    Then User should see the dashboard
-    @librarian
+    When I enter username "<username>"
+    And I enter password "<password>"
+    Then I should see the dashboard
+
     Examples:
       | username            | password |
-      | librarian13@library | 9rf6axdD |
       | librarian14@library | 87x8afWY |
-    @student
+      | librarian13@library | 9rf6axdD |
+
+
+  @library      @student
+    Scenario Outline: Login as librarian
+      When I enter username "<username>"
+      And I enter password "<password>"
+      Then I should see the dashboard
     Examples:
       | username            | password |
       | student11@library   | tScBPCUr |
@@ -26,11 +32,11 @@ Feature: Library app login feature
 
   @showRecords
   Scenario: Login as librarian
-    When User enters username "librarian13@library"
-    And User enters password "9rf6axdD"
-    And User clicks "Users" link
-    And User sees to records dropdown value should be "10" by default
-    Then User should see the records should have following options:
+    When I enter username "librarian13@library"
+    And I enter password "9rf6axdD"
+    And I click "Users" link
+    And I see to records dropdown value should be "10" by default
+    Then I should see the records should have following options:
       | 5   |
       | 10  |
       | 15  |
@@ -38,7 +44,7 @@ Feature: Library app login feature
       | 100 |
       | 200 |
       | 500 |
-    Then User should have following columns in the table:
+    Then I should have following columns in the table:
       | Actions   |
       | User ID   |
       | Full Name |
@@ -46,7 +52,7 @@ Feature: Library app login feature
       | Group     |
       | Status    |
 
-@all
+  @library
   Scenario Outline: Login as a different username and password
     When I enter "<username>" and "<password>"
     Then user should see their "<username>" on account section
